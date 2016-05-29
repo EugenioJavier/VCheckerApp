@@ -24,7 +24,7 @@ RUN chmod 777 $JAVAJAR
 
 RUN apt-get update
 
-Installing Java
+#Installing Java
 
 RUN apt-get  install -y openjdk-7-jre-headless 
 
