@@ -5,7 +5,7 @@ MAINTAINER Javier Cabezas Gívica y Eugenio F. González Martín
 
 # Environment variable describing the repositories to be verified on : Github,Bower,NPN,Archiva and Maven
  
-ENV REPOSITORIES config.json
+ENV REPOSITORIES /pipeline/source/config.json
 
 #Environment variable with java jar file
 
@@ -40,5 +40,5 @@ RUN npm install -g bower
 
 # Creating the entrypoint for the Docker
 
-#ENTRYPOINT java -jar $JAVAJAR $REPOSITORIES 
+ENTRYPOINT java -jar $JAVAJAR $REPOSITORIES 
 
