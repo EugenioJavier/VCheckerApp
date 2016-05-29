@@ -3,13 +3,13 @@ FROM ubuntu:14.04
 
 MAINTAINER Javier Cabezas Gívica y Eugenio F. González Martín 
 
-#Environment variable with java jar file name
+#Environment variable with the folder on which the jar file will be copied in the container and the jar name
 
-ENV JAVAJAR VCheckerApp-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+ENV JARPATHFILE /usr/bin/VCheckerApp-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 
-#Environment variable with the folder on which the jar file will be copied in the container 
+#Environment variable with the jar path
 
-ENV JARPATH /usr/bin
+ENV JARPATH usr/bin
 
 #Environment variable to define the json input file
 
@@ -41,5 +41,5 @@ RUN npm install -g bower
 
 # Creating the commmand to be executed
 
-CMD ["java","-jar $JARPATH/$JAVAJAR","$CONFIGJSON"]
+CMD ["java","-jar","echo ${JARPATHFILE}","echo ${CONFIGJSON}"]
 
