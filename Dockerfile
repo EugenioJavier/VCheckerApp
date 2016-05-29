@@ -16,7 +16,7 @@ COPY $PWD /usr/bin
 # Set up of required permissions to execute the jar file  
 #
 
-RUN chmod 777 $JAVAJAR
+# RUN chmod 777 $JAVAJAR
 
 # Updating packages
 
