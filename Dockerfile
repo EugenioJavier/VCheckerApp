@@ -20,21 +20,21 @@ COPY $PWD /usr/bin
 
 # Updating packages
 
-RUN apt-get update
+#RUN apt-get update
 
 # Installing Java
 
-RUN apt-get  install -y openjdk-7-jre-headless 
+#RUN apt-get  install -y openjdk-7-jre-headless 
 
 # Installing NPM
 
-RUN apt-get install -y nodejs
+#RUN apt-get install -y nodejs
 
-RUN apt-get install -y npm
+#RUN apt-get install -y npm
 
 # Installing BOWER
 
-RUN npm install -g bower
+#RUN npm install -g bower
 
 # Creating the entrypoint for the Docker
 
