@@ -38,5 +38,5 @@ RUN npm install -g bower
 
 # Creating the entrypoint for the Docker
 
-ENTRYPOINT java -jar /usr/bin/$JAVAJAR $CONFIGJSON 
+#ENTRYPOINT java -jar /usr/bin/$JAVAJAR $CONFIGJSON 
 
