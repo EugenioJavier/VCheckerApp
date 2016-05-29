@@ -1,5 +1,5 @@
 
-FROM maven:3.3-jdk-8
+FROM ubuntu:14.04
 
 MAINTAINER Javier Cabezas Gívica y Eugenio F. González Martín 
 
@@ -11,15 +11,10 @@ ENV REPOSITORIES config.json
 
 ENV JAVAJAR VCheckerApp-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 
-# Copying the contents of the current directory into /usr/src/mymaven/ (i.e. the jar file mainly)
+# Copying the contents of the current directory to the container
 
-COPY $PWD /usr/src/mymaven/
+COPY $PWD .
 
-# Making mymaven our working directory (on which we also have the jar file)
-
-WORKDIR /usr/src/mymaven
-
-#
 # Set up of required permissions to execute the jar file  
 #
 
@@ -28,6 +23,10 @@ RUN chmod 777 $JAVAJAR
 # Updating packages
 
 RUN apt-get update
+
+# Installing Java
+
+RUN apt-get  install -y openjdk-7-jre-headless 
 
 # Installing NPM
 
