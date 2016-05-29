@@ -13,30 +13,32 @@ ENV JAVAJAR VCheckerApp-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 
 COPY $PWD /usr/bin
 
+WORKDIR /usr/bin
+
 # Set up of required permissions to execute the jar file  
 #
 
-# RUN chmod 777 $JAVAJAR
+RUN chmod 777 $JAVAJAR
 
 # Updating packages
 
-#RUN apt-get update
+RUN apt-get update
 
-# Installing Java
+Installing Java
 
-#RUN apt-get  install -y openjdk-7-jre-headless 
+RUN apt-get  install -y openjdk-7-jre-headless 
 
-# Installing NPM
+#Installing NPM
 
-#RUN apt-get install -y nodejs
+RUN apt-get install -y nodejs
 
-#RUN apt-get install -y npm
+RUN apt-get install -y npm
 
 # Installing BOWER
 
-#RUN npm install -g bower
+RUN npm install -g bower
 
 # Creating the entrypoint for the Docker
 
-#ENTRYPOINT java -jar /usr/bin/$JAVAJAR $CONFIGJSON 
+ENTRYPOINT java -jar /usr/bin/$JAVAJAR $CONFIGJSON 
 
