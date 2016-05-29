@@ -3,42 +3,43 @@ FROM ubuntu:14.04
 
 MAINTAINER Javier Cabezas Gívica y Eugenio F. González Martín 
 
-# Environment variable describing the repositories to be verified on : Github,Bower,NPN,Archiva and Maven
- 
-#Environment variable with java jar file
+#Environment variable with java jar file name
 
 ENV JAVAJAR VCheckerApp-0.0.1-SNAPSHOT-jar-with-dependencies.jar
 
+#Environment variable with the folder on which the jar file will be copied in the container 
+
+ENV JARPATH /usr/bin
+
+#Environment variable to define the json input file
+
+ENV CONFIGJSON config.json
+
 # Copying the contents of the current directory to the container
 
-COPY $PWD /usr/bin
+COPY $PWD $JARPATH
 
-WORKDIR /usr/bin
-
-# Set up of required permissions to execute the jar file  
-#
-
-RUN chmod 777 $JAVAJAR
+# Starting with the installations required to use this container as an artifact checker
 
 # Updating packages
 
 RUN apt-get update
 
-#Installing Java
+# Installing Java
 
 RUN apt-get  install -y openjdk-7-jre-headless 
 
-#Installing NPM
+# Installing NPM
 
 RUN apt-get install -y nodejs
 
 RUN apt-get install -y npm
 
-# Installing BOWER
+# Installing Bower
 
 RUN npm install -g bower
 
-# Creating the entrypoint for the Docker
+# Creating the commmand to be executed
 
-#ENTRYPOINT java -jar /usr/bin/$JAVAJAR $CONFIGJSON 
+CMD ["java","-jar $JARPATH/$JAVAJAR","$CONFIGJSON"]
 
