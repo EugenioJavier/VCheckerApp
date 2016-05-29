@@ -41,5 +41,5 @@ RUN npm install -g bower
 
 # Creating the commmand to be executed
 
-CMD ["java","-jar","echo ${JARPATHFILE}","echo ${CONFIGJSON}"]
+CMD java -jar $JARPATHFILE $CONFIGJSON
 
